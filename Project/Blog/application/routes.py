@@ -47,6 +47,9 @@ def updatepost(pid):
         return redirect(url_for('home'))
     return render_template('updatepost.html', form = form)
 
-@app.route('/deletepost')
-def deletepost():
-    return render_template('deletepost.html')
+@app.route('/deletepost/<int:pid>')
+def deletepost(pid):
+    post = Post.query.filter_by(id=pid).first()
+    db.session.delete(post)
+    db.session.commit()
+    return redirect(url_for('home'))
