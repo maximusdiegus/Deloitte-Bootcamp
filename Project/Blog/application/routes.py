@@ -14,3 +14,11 @@ def viewpost():
 @app.route('/addpost')
 def addpost():
     return render_template('addpost.html')
+
+@app.route('/updatepost')
+def updatepost():
+    return render_template('updatepost.html')
+
+@app.route('/deletepost')
+def deletepost():
+    return render_template('deletepost.html')

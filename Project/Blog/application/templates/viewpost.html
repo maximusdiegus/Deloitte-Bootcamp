@@ -27,22 +27,17 @@
             
           </table> 
       </div>
-      
-    <div class="rightcolumn">
-      <div class="card">
-        <h2>About Me</h2>
-        <div class="fakeimg" style="height:100px;">Image</div>
-        <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-      </div>
-      <div class="card">
-        <h3>Follow Me</h3>
-        <p>Some text..</p>
-      </div>
-    </div>
-  </div>
-  
+  <br>
   <div class="footer">
-    <h2>Footer</h2>
+    
+    <form action="{{ url_for('updatepost') }}">
+        <input type="submit" value="Update" />
+    </form>
+
+    <form action="{{ url_for('deletepost') }}">
+        <input type="submit" value="Delete post" />
+    </form>
+    
 
   </div> 
 
