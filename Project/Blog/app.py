@@ -1,16 +1,5 @@
-from flask import Flask, render_template
+from flask import Flask
+from application import app
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///blogdata.db"
-
-# class blogClass(FlaskForm):
-    
-    
-@app.route('/')
-def home():
-    return render_template('home.html')
-
-
-
-if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0', port=5000)
+if __name__ == '__main__':
+    app.run(debug = True, host = '0.0.0.0')

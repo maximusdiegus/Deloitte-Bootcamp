@@ -23,4 +23,4 @@ if input("This will erase the database first. Are you sure you want to continue?
         UserId = db.Column(db.Integer, db.ForeignKey('User.UserId'), nullable=False)
 
     with app.app_context():
-        db.create_all()  
+        db.create_all() 
