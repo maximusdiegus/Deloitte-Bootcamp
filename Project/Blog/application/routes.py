@@ -1,19 +1,41 @@
 from application import app, db
 from application.models import User, Post
-from application.forms import AddPost, UpdatePost
+from application.forms import AddPost, UpdatePost, SelectUser, AddUser, EditUser
 from flask import Flask, render_template, request, redirect, url_for
-    
+
 @app.route('/')
-@app.route('/login')
+@app.route('/login', methods=['GET','POST'])
 def login():
-    return render_template('login.html')
+    form = SelectUser()
+    if request.method == 'POST':
+        user = User.query.filter_by(username = form.username.data, password = form.password.data).first()
+        if user:
+            return redirect(url_for('home'))
+            
+    return render_template('login.html', form=form)
 
-@app.route('/register')
+@app.route('/register', methods=['GET','POST'])
 def register():
-    return render_template('register.html')
+    form = AddUser()
+    if request.method == 'POST':
+        newUser = User(
+            username = form.username.data,
+            password = form.password.data
+        )
+        db.session.add(newUser)
+        db.session.commit()
+        return redirect(url_for('login'))
+    return render_template('register.html', form=form)
 
-@app.route('/edituser')
+@app.route('/edituser', methods=['GET','POST'])
 def edituser():
+    form = EditUser()
+    if request.method == 'POST':
+        user = User.query.filter_by(username = form.username, password = form.password).first()
+        user.username = form.username.data
+        user.password = form.password
+        db.session.commit()
+        return redirect(url_for('login'))
     return render_template('edituser.html')
 
 @app.route('/home')
@@ -23,16 +45,23 @@ def home():
 @app.route('/viewpost')
 def viewpost():
     posts = Post.query.all()
-    return render_template('viewpost.html', posts=posts)
+    userForm = SelectUser()
+    user = User.query.filter_by(username = userForm.username.data, password = userForm.password.data)
+    
+    return render_template('viewpost.html', posts=posts, user=user)
 
 @app.route('/addpost', methods=['GET','POST'])
 def addpost():
     form = AddPost()
+    userForm = SelectUser()
+    user = User.query.filter_by(username = userForm.username.data, password = userForm.password.data)
+    
     if request.method == 'POST':
         newPost = Post(
             title = form.title.data,
             datePosted = form.datePosted,
-            text = form.text.data
+            text = form.text.data,
+            user_id = user.id
         )
         db.session.add(newPost)
         db.session.commit()

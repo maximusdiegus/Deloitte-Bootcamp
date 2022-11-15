@@ -1,0 +1,19 @@
+{% extends 'loginheader.html' %}
+{% block body %}
+
+
+<h2> Login into your blog </h2>
+<br>
+<div class='form'>
+    <form method='POST' action=''>
+        {{ form.hidden_tag() }}
+        {{ form.username.label }} {{ form.username }}
+        <br>
+        {{ form.password.label }} {{ form.password }}
+        <br>
+        {{ form.submit }}
+    </form>
+</div>
+
+
+{% endblock body %}
