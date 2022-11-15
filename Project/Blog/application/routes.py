@@ -4,6 +4,18 @@ from application.forms import AddPost, UpdatePost
 from flask import Flask, render_template, request, redirect, url_for
     
 @app.route('/')
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
+@app.route('/register')
+def register():
+    return render_template('register.html')
+
+@app.route('/edituser')
+def edituser():
+    return render_template('edituser.html')
+
 @app.route('/home')
 def home():
     return render_template('home.html')
@@ -24,7 +36,7 @@ def addpost():
         )
         db.session.add(newPost)
         db.session.commit()
-        return redirect(url_for('home', pid = newPost.id))
+        return redirect(url_for('viewpost', pid = newPost.id))
     return render_template('addpost.html', form=form)
 
 @app.route('/updatepost/<int:pid>', methods=['GET','POST'])
@@ -45,24 +57,3 @@ def deletepost(pid):
     db.session.delete(post)
     db.session.commit()
     return redirect(url_for('home'))
-
-# @app.route('/updatepost', methods=['GET','POST'])
-# def updatepost():
-#     pid = 1
-#     form = UpdatePost()
-#     if request.method == 'POST':
-#         post = Post.query.filter_by(id=pid).first()
-#         post.title = form.title.data
-#         post.titleDescription = form.titleDescription.data
-#         post.text = form.text.data
-#         db.session.commit()
-#         return redirect(url_for('home'))
-#     return render_template('updatepost.html', form=form)
-
-# @app.route('/deletepost')
-# def deletepost():
-#     pid = 1
-#     post = Post.query.filter_by(id=pid).first()
-#     db.session.delete(post)
-#     db.session.commit()
-#     return redirect(url_for('home'))

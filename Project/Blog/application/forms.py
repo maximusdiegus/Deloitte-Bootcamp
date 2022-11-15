@@ -14,3 +14,16 @@ class UpdatePost(FlaskForm):
     datePosted = datetime.now()
     text = StringField('Your post topic. ', validators=[DataRequired(message="The text cannot be left blank")])
     submit = SubmitField('Update post')
+    
+class AddUser(FlaskForm):
+    username = StringField('Username: ', validators=[DataRequired(message="The the username cannot be left blank")])
+    password = StringField('Password: ', validators=[DataRequired(message="The password cannot be left blank")])
+
+class EditUser(FlaskForm):
+    username = StringField('Username: ', validators=[DataRequired(message="The the username cannot be left blank")])
+    password = StringField('Password: ', validators=[DataRequired(message="The password cannot be left blank")])
+    
+class SelectUser(FlaskForm):
+    username = StringField('Username: ', validators=[DataRequired(message="The the username cannot be left blank")])
+    password = StringField('Password: ', validators=[DataRequired(message="The password cannot be left blank")])
+    
