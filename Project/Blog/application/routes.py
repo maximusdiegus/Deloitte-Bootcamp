@@ -16,24 +16,16 @@ def viewpost():
 @app.route('/addpost', methods=['GET','POST'])
 def addpost():
     form = AddPost()
-    allPosts = Post.query.all()
-    for post in allPosts:
-        form.post.choices.append((
-            post.id,
-            post.title,
-            post.titleDescription,
-            post.text
-        ))
     if request.method == 'POST':
         newPost = Post(
             title = form.title.data,
-            titleDescription = form.titleDescription.data,
+            datePosted = form.datePosted,
             text = form.text.data
         )
         db.session.add(newPost)
         db.session.commit()
-    
-    return render_template('addpost.html')
+        return redirect(url_for('home', pid = newPost.id))
+    return render_template('addpost.html', form=form)
 
 @app.route('/updatepost/<int:pid>', methods=['GET','POST'])
 def updatepost(pid):
@@ -41,11 +33,11 @@ def updatepost(pid):
     if request.method == 'POST':
         post = Post.query.filter_by(id=pid).first()
         post.title = form.title.data
-        post.titleDescription = form.titleDescription.data
+        post.datePosted = form.datePosted
         post.text = form.text.data
         db.session.commit()
         return redirect(url_for('home'))
-    return render_template('updatepost.html', form = form)
+    return render_template('updatepost.html', form=form)
 
 @app.route('/deletepost/<int:pid>')
 def deletepost(pid):
@@ -53,3 +45,24 @@ def deletepost(pid):
     db.session.delete(post)
     db.session.commit()
     return redirect(url_for('home'))
+
+# @app.route('/updatepost', methods=['GET','POST'])
+# def updatepost():
+#     pid = 1
+#     form = UpdatePost()
+#     if request.method == 'POST':
+#         post = Post.query.filter_by(id=pid).first()
+#         post.title = form.title.data
+#         post.titleDescription = form.titleDescription.data
+#         post.text = form.text.data
+#         db.session.commit()
+#         return redirect(url_for('home'))
+#     return render_template('updatepost.html', form=form)
+
+# @app.route('/deletepost')
+# def deletepost():
+#     pid = 1
+#     post = Post.query.filter_by(id=pid).first()
+#     db.session.delete(post)
+#     db.session.commit()
+#     return redirect(url_for('home'))

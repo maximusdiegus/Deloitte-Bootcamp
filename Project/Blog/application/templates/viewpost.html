@@ -9,37 +9,36 @@
 
 <div class="header">
     <h2>Blog Name</h2>
-  </div>
-  
-  <div class="row">
+</div>
+{% for post in posts %}
+<div class="row">
     <div class="leftcolumn">
-      <div class="card">
-        <table> 
-            <tr>
-              <th><h2>TITLE HEADING</h2></th>
-            </tr>
-            <tr>
-              <td><h5>Title description, Sep 2, 2017</h5></td>
-            </tr>
-            <tr>
-                <td><p>Some text..</p></td>
-            </tr>
-            
-          </table> 
-      </div>
-  <br>
+        <div class="card">
+            <table> 
+                <tr>
+                <th><h2>{{ post.title }}</h2></th>
+                </tr>
+                <tr>
+                <td><h5>{{ post.datePosted }}</h5></td>
+                </tr>
+                <tr>
+                    <td><p>{{ post.text }}</p></td>
+                </tr>
+            </table> 
+        </div>
+        <br>
   <div class="footer">
     
-    <form action="{{ url_for('updatepost') }}">
+    <form action="{{ url_for('updatepost', pid=post.id) }}">
         <input type="submit" value="Update" />
     </form>
 
-    <form action="{{ url_for('deletepost') }}">
+    <form action="{{ url_for('deletepost', pid=post.id) }}">
         <input type="submit" value="Delete post" />
     </form>
     
 
-  </div> 
-
-  <br>
-  {% endblock body %}
+</div> 
+{% endfor %}
+<br>
+{% endblock body %}

@@ -1,9 +1,19 @@
 {% extends 'header.html' %}
 {% block body %}
-
+<h2> Update your post </h2>
 <br>
-
-updatepost
+<div class='form'>
+            <form method='POST' action=''>
+                {{ form.hidden_tag() }}
+                {{ form.title.label }} {{ form.title }}
+                <br>
+                {{ form.datePosted.label }} {{ form.datePosted }}
+                <br>
+                {{ form.text.label }} {{ form.text }}
+                <br>
+                {{ form.submit }}
+	    </form>
+</div>
 
 
 {% endblock body %}
