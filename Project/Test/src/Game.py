@@ -1,6 +1,6 @@
-from Enum.GameStatus import GameStatus
-from Enum.Symbol import Symbol
-from Enum.Strings import Strings
+from .enum.GameStatus import GameStatus
+from .enum.Symbol import Symbol
+from .enum.Strings import Strings
 from Board import Board
 from IPlayer import IPlayer
 import json
