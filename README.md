@@ -60,11 +60,13 @@ The coverage reports, showing what percentage of statements were included in the
 Upon navigating to the app the user is presented with the login page: 
 
 ![login](https://github.com/maximusdiegus/Deloitte-Bootcamp/blob/main/Project/Blog/utils/login.PNG)
+
 The nav bar provides links which allow users to sign up,
 
 ![register](https://github.com/maximusdiegus/Deloitte-Bootcamp/blob/main/Project/Blog/utils/register.PNG)
 
 or edit their password. 
+
 ![editpassword](https://github.com/maximusdiegus/Deloitte-Bootcamp/blob/main/Project/Blog/utils/edituser.PNG)
 
 Once the user has logged in, this is what it is shown, the home page:
@@ -82,7 +84,7 @@ Finally the user can add a new post and logout
 which will redirect to the login page.
 
 ## Updates:
-    - Tests added
+    Tests added
 
 ## Known Issues:
 * A user cannot have their own posts for himself. it's a shared blog
