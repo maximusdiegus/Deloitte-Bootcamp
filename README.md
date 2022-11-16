@@ -34,6 +34,8 @@ The jira board can be accessed [here](https://diegusdeveloper.atlassian.net/jira
 
 For version control, git was used, with the project repository hosted on github. Version control via git allows changes to the project to be made and committed whilst keeping the commit history for access to earlier versions. GitHub as a repository hosting service allows the repository to be stored away from the development environment, as well as providing webhooks, which send http POST requests to the build server to automate building and testing. 
 
+![git](https://github.com/maximusdiegus/Deloitte-Bootcamp/blob/main/Project/Blog/utils/git.PNG)
+
 The development environment used was a python3 virtual environment (venv) hosted on a virtual machine running Ubuntu 20.04. Python is used as Flask is a python-based framework. A venv allows pip installs to be performed and the app to be run without affecting any conflicting pip installs on the same machine.
 
 ## Risk Assessment:
