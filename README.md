@@ -35,3 +35,57 @@ The jira board can be accessed [here](https://diegusdeveloper.atlassian.net/jira
 For version control, git was used, with the project repository hosted on github. Version control via git allows changes to the project to be made and committed whilst keeping the commit history for access to earlier versions. GitHub as a repository hosting service allows the repository to be stored away from the development environment, as well as providing webhooks, which send http POST requests to the build server to automate building and testing. 
 
 The development environment used was a python3 virtual environment (venv) hosted on a virtual machine running Ubuntu 20.04. Python is used as Flask is a python-based framework. A venv allows pip installs to be performed and the app to be run without affecting any conflicting pip installs on the same machine.
+
+## Risk Assessment:
+Prior to building the app, a risk assessment was undertaken to identify risks and propose measures to control these risks. These measures could then be implemented in the app. This initial risk assessment is shown below:   
+
+![RA](https://github.com/maximusdiegus/Deloitte-Bootcamp/blob/main/Project/Blog/utils/risk%20assesment.PNG)  
+Some of the control measures implemented in the project as a result of the risk assessment are as follows:  
+* SQLAlchemy was used with Flask to prevent SQL commands being sent directly to the database.   
+
+The likelihood and impact level (out of 5) of each risk identified were estimated before and after the implementation of control measures, to quantify the effect of implementing the measures.
+
+
+## Testing:  
+Testing the app was an essential part of the development process. Two types of testing were implemented:  
+* Unit testing tests _units of functionality_ (i.e functions) within the app. Unit tests were written for create, read, update and delete functionality, to ensure that these worked as intended.
+* Integration testing tests the function of the app in an as-live environment, being able to simulate keyboard input and mouse clicks to ensure that these elements of the app function as intended. Integration tests were written for many of the forms employed in the app.  
+
+As this is not a production app, tests such as security tests and performance tests were not part of the scope of this project; only testing for functionality was performed.
+
+![build]()  
+The coverage reports, showing what percentage of statements were included in the tests, were output as html files, which were archived post-build. The coverage report for the above build was:  
+
+# The App:  
+Upon navigating to the app the user is presented with the login page: 
+
+![login](https://github.com/maximusdiegus/Deloitte-Bootcamp/blob/main/Project/Blog/utils/login.PNG)
+The nav bar provides links which allow users to sign up,
+
+![register](https://github.com/maximusdiegus/Deloitte-Bootcamp/blob/main/Project/Blog/utils/register.PNG)
+
+or edit their password. 
+![editpassword](https://github.com/maximusdiegus/Deloitte-Bootcamp/blob/main/Project/Blog/utils/edituser.PNG)
+
+Once the user has logged in, this is what it is shown, the home page:
+![home](https://github.com/maximusdiegus/Deloitte-Bootcamp/blob/main/Project/Blog/utils/home.PNG)
+
+From here a user can see it's own posts:
+![viewpost](https://github.com/maximusdiegus/Deloitte-Bootcamp/blob/main/Project/Blog/utils/viewpost.PNG)
+
+Every post has their own option for updatin the information of the post or to delete the post itself.
+
+
+Finally the user can add a new post and logout
+![addpost](https://github.com/maximusdiegus/Deloitte-Bootcamp/blob/main/Project/Blog/utils/addpost.PNG)
+
+which will redirect to the login page.
+
+## Updates:
+    - Tests added
+
+## Known Issues:
+* A user cannot have their own posts for himself. it's a shared blog
+
+## Future Work:
+In future sprints, in addition to fixing the issues identified above, I would like to add a more featres for every post so the user an have more options for his posts. 
