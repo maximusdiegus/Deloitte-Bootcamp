@@ -60,7 +60,7 @@ def addpost():
             title = form.title.data,
             datePosted = form.datePosted,
             text = form.text.data,
-            user_id = user.id
+            #user_id = user.id
         )
         db.session.add(newPost)
         db.session.commit()
