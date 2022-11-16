@@ -31,12 +31,11 @@ def register():
 def edituser():
     form = EditUser()
     if request.method == 'POST':
-        user = User.query.filter_by(username = form.username, password = form.password).first()
-        user.username = form.username.data
-        user.password = form.password
+        user = User.query.filter_by(username = form.username.data).first()
+        user.password = form.password.data
         db.session.commit()
         return redirect(url_for('login'))
-    return render_template('edituser.html')
+    return render_template('edituser.html', form=form)
 
 @app.route('/home')
 def home():

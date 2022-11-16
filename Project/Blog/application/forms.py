@@ -23,7 +23,7 @@ class AddUser(FlaskForm):
 class EditUser(FlaskForm):
     username = StringField('Username: ', validators=[DataRequired(message="The the username cannot be left blank")])
     password = StringField('Password: ', validators=[DataRequired(message="The password cannot be left blank")])
-    submit = SubmitField('Update user')
+    submit = SubmitField('Update password')
      
 class SelectUser(FlaskForm):
     username = StringField('Username: ', validators=[DataRequired(message="The the username cannot be left blank")])
